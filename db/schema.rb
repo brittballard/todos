@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130725184955) do
+ActiveRecord::Schema.define(version: 20130725202633) do
 
   create_table "todos", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+    t.string   "owner_email"
   end
 
 end

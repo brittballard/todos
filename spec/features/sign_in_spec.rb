@@ -2,10 +2,10 @@ require 'spec_helper'
 
 feature 'sign in' do
   scenario 'user signs in' do
-    visit root_path
-    fill_in 'Email', with: 'person@email.com'
-    click_button 'Sign in'
+    email = 'person@example.com'
+    sign_in_as(email)
     expect(page).to have_css 'ul.todos'
-    expect(page).to have_css '.welcome', text: 'Welcome person@email.com!'
+    expect(page).to have_css '.welcome', text: "Welcome #{email}!"
   end
 end
+
