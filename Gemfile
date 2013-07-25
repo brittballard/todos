@@ -5,6 +5,7 @@ gem 'high_voltage'
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'awesome_print'
 end
 
 group :test do

@@ -14,6 +14,13 @@ class TodosController < ApplicationController
     redirect_to action: :index
   end
 
+  def send_todos
+    TodoMailer.
+      completed_todos(current_user.email).
+      deliver
+    redirect_to action: :index
+  end
+
   private
 
   def todo_params

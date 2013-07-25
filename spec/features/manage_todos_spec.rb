@@ -19,6 +19,16 @@ feature 'manage todos' do
   scenario 'user can mark a todo as complete' do
     create(:todo, description: 'My todo', owner_email: 'my@email.com')
     sign_in_as('my@email.com')
+    click_link 'Complete'
+    expect(page).to have_css 'li.completed'
+  end
+
+  scenario 'user can request a list of completed todos via email' do
+    sign_in_as('my@email.com')
+    create(:todo, description: 'My todo', completed_at: Time.now)
+    click_link 'Email completed todos'
+    expect(ActionMailer::Base.deliveries.length).to eq 1
+    expect(ActionMailer::Base.deliveries[0].body.to_s).to match /Test email/
   end
 end
 
